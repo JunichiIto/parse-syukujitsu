@@ -18,13 +18,12 @@ class SyukujitsuParser
     ret = {}
     pairs.each { |cols|
       year = parse_year(cols[YEAR_COL][0])
-      hash = {}
-      ret[year] = hash
-      cols[DATA_COL_RANGE].each { |name, date|
+      hash = cols[DATA_COL_RANGE].map { |name, date|
         if parsed_date = try_date_parse(date)
-          hash[parsed_date] = name
+          [parsed_date, name]
         end
-      }
+      }.compact.to_h
+      ret[year] = hash
     }
     ret
   end
