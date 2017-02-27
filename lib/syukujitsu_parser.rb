@@ -17,7 +17,7 @@ class SyukujitsuParser
   end
 
   def generate_pairs(csv_path)
-    to_transposed_array(csv_path)
+    read_and_transpose_csv(csv_path)
         .each_slice(ROW_CYCLE)
         .map(&:transpose)
   end
@@ -30,7 +30,7 @@ class SyukujitsuParser
     }.compact.to_h
   end
 
-  def to_transposed_array(csv_path)
+  def read_and_transpose_csv(csv_path)
     CSV.foreach(csv_path, encoding: 'CP932').map { |row|
       row.map { |col| col&.encode('UTF-8') }
     }.transpose
