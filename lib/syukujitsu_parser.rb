@@ -29,12 +29,8 @@ class SyukujitsuParser
   def to_transposed_array(csv_path)
     raw_grid = []
     CSV.foreach(csv_path, encoding: 'CP932') { |row|
-      cols = []
+      cols = row.map { |col| col&.encode('UTF-8') }
       raw_grid << cols
-      row.each { |col|
-        val = col&.encode('UTF-8')
-        cols << val
-      }
     }
     raw_grid.transpose
   end
