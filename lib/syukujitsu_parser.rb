@@ -13,7 +13,10 @@ class SyukujitsuParser
 
   def parse(csv_path)
     pairs = generate_pairs(csv_path)
-    pairs.map { |cols| [parse_year(cols[YEAR_COL].first), to_data(cols)] }.to_h
+    pairs.map { |cols|
+      year = parse_year(cols[YEAR_COL].first)
+      [year, to_data(cols)]
+    }.to_h
   end
 
   def generate_pairs(csv_path)
