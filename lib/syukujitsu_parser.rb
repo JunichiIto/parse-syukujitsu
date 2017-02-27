@@ -3,7 +3,7 @@ require 'date'
 
 class SyukujitsuParser
   YEAR_COL = 0
-  HEADER_COL = 1
+  DATA_COL_RANGE = 2..-1
   ROW_CYCLE = 2
   CSV_PATH = File.expand_path('../../resource/syukujitsu.csv', __FILE__)
 
@@ -16,15 +16,13 @@ class SyukujitsuParser
                 .each_slice(ROW_CYCLE)
                 .map { |name_row, date_row| name_row.zip(date_row) }
     ret = {}
-    pairs.each_with_index { |cols, row_no|
+    pairs.each { |cols|
       year = parse_year(cols[YEAR_COL][0])
       hash = {}
       ret[year] = hash
-      cols.each_with_index { |(name, date), col_no|
-        if col_no > HEADER_COL
-          if parsed_date = try_date_parse(date)
-            hash[parsed_date] = name
-          end
+      cols[DATA_COL_RANGE].each { |name, date|
+        if parsed_date = try_date_parse(date)
+          hash[parsed_date] = name
         end
       }
     }
