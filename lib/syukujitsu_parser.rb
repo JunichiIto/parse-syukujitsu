@@ -17,13 +17,16 @@ class SyukujitsuParser
                 .map { |name_row, date_row| name_row.zip(date_row) }
     pairs.map { |cols|
       year = parse_year(cols[YEAR_COL][0])
-      data = cols[DATA_COL_RANGE].map { |name, date|
-        if parsed_date = try_date_parse(date)
-          [parsed_date, name]
-        end
-      }.compact.to_h
-      [year, data]
+      [year, to_data(cols)]
     }.to_h
+  end
+
+  def to_data(cols)
+    cols[DATA_COL_RANGE].map { |name, date|
+      if parsed_date = try_date_parse(date)
+        [parsed_date, name]
+      end
+    }.compact.to_h
   end
 
   def to_transposed_array(csv_path)
