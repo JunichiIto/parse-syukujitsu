@@ -19,6 +19,8 @@ class SyukujitsuParser
     }.to_h
   end
 
+  private
+
   def generate_pairs(csv_path)
     read_and_transpose_csv(csv_path)
         .each_slice(ROW_CYCLE)
