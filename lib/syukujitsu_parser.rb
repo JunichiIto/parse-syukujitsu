@@ -22,7 +22,9 @@ class SyukujitsuParser
   private
 
   def generate_pairs(csv_path)
-    read_and_transpose_csv(csv_path)
+    csv = File.read(csv_path, external_encoding: 'CP932', internal_encoding: 'UTF-8')
+    CSV.parse(csv)
+        .transpose
         .each_slice(ROW_CYCLE)
         .map(&:transpose)
   end
@@ -33,12 +35,6 @@ class SyukujitsuParser
         [parsed_date, name]
       end
     }.compact.to_h
-  end
-
-  def read_and_transpose_csv(csv_path)
-    CSV.foreach(csv_path, encoding: 'CP932').map { |row|
-      row.map { |col| col&.encode('UTF-8') }
-    }.transpose
   end
 
   def try_date_parse(text)
