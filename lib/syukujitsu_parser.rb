@@ -22,8 +22,7 @@ class SyukujitsuParser
   private
 
   def generate_pairs(csv_path)
-    csv = File.read(csv_path, external_encoding: 'CP932', internal_encoding: 'UTF-8')
-    CSV.parse(csv)
+    CSV.read(csv_path, external_encoding: 'CP932', internal_encoding: 'UTF-8')
         .transpose
         .each_slice(ROW_CYCLE)
         .map(&:transpose)
