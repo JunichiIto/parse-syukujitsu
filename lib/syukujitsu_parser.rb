@@ -12,24 +12,24 @@ class SyukujitsuParser
   end
 
   def parse(csv_path)
-    pairs = generate_pairs(csv_path)
-    pairs.map { |cols|
-      year = parse_year(cols[YEAR_COL].first)
-      [year, to_data(cols)]
+    pair_rows = generate_pair_rows(csv_path)
+    pair_rows.map { |pair_cols|
+      year = parse_year(pair_cols[YEAR_COL].first)
+      [year, to_data(pair_cols)]
     }.to_h
   end
 
   private
 
-  def generate_pairs(csv_path)
+  def generate_pair_rows(csv_path)
     CSV.read(csv_path, external_encoding: 'CP932', internal_encoding: 'UTF-8')
         .transpose
         .each_slice(ROW_CYCLE)
         .map(&:transpose)
   end
 
-  def to_data(cols)
-    cols[DATA_COL_RANGE].map { |name, date|
+  def to_data(pair_cols)
+    pair_cols[DATA_COL_RANGE].map { |name, date|
       parsed_date = try_date_parse(date)
       [parsed_date, name] if parsed_date
     }.compact.to_h
