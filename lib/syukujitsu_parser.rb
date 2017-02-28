@@ -30,9 +30,8 @@ class SyukujitsuParser
 
   def to_data(cols)
     cols[DATA_COL_RANGE].map { |name, date|
-      if parsed_date = try_date_parse(date)
-        [parsed_date, name]
-      end
+      parsed_date = try_date_parse(date)
+      [parsed_date, name] if parsed_date
     }.compact.to_h
   end
 
