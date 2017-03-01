@@ -1,3 +1,4 @@
+require './test/test_helper'
 require './lib/syukujitsu_parser'
 require 'minitest/autorun'
 
@@ -67,7 +68,9 @@ class SyukujitsuParserTest < Minitest::Test
   end
 
   def test_parse_from_web
-    actual = SyukujitsuParser.parse_from_web
-    assert_equal expected, actual
+    VCR.use_cassette 'test_parse_from_web' do
+      actual = SyukujitsuParser.parse_from_web
+      assert_equal expected, actual
+    end
   end
 end

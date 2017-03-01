@@ -1,0 +1,49 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 01 Mar 2017 00:54:39 GMT
+      Server:
+      - Apache
+      X-Frame-Options:
+      - SAMEORIGIN
+      Last-Modified:
+      - Wed, 01 Feb 2017 01:49:58 GMT
+      Etag:
+      - '"45d-5476e4418bd80"'
+      Accept-Ranges:
+      - bytes
+      Content-Length:
+      - '1117'
+      Cache-Control:
+      - no-store
+      Expires:
+      - Wed, 01 Mar 2017 00:54:39 GMT
+      Pragma:
+      - no-cache
+      Content-Type:
+      - text/csv
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        lb2QrDI4lE6BaTIwMTaUToFqLCyVvZCsMjmUToFpMjAxN5ROgWosLJW9kKwzMJROgWkyMDE4lE6BaiwNCpa8j8wsjI6T+iyWvI/MLIyOk/oslryPzCyMjpP6DQqMs5P6LDIwMTYvMS8xLIyzk/osMjAxNy8xLzEsjLOT+iwyMDE4LzEvMQ0KkKyQbILMk/osMjAxNi8xLzExLJCskGyCzJP6LDIwMTcvMS85LJCskGyCzJP6LDIwMTgvMS84DQqMmo2Ri0yUT4LMk/osMjAxNi8yLzExLIyajZGLTJRPgsyT+iwyMDE3LzIvMTEsjJqNkYtMlE+CzJP6LDIwMTgvMi8xMQ0Kj3SVqoLMk/osMjAxNi8zLzIwLI90laqCzJP6LDIwMTcvMy8yMCyPdJWqgsyT+iwyMDE4LzMvMjENCo+6mGGCzJP6LDIwMTYvNC8yOSyPuphhgsyT+iwyMDE3LzQvMjksj7qYYYLMk/osMjAxOC80LzI5DQqMm5ZAi0yUT5P6LDIwMTYvNS8zLIyblkCLTJRPk/osMjAxNy81LzMsjJuWQItMlE+T+iwyMDE4LzUvMw0Kgt2Cx4LogsyT+iwyMDE2LzUvNCyC3YLHguiCzJP6LDIwMTcvNS80LILdgseC6ILMk/osMjAxOC81LzQNCoKxgseC4ILMk/osMjAxNi81LzUsgrGCx4LggsyT+iwyMDE3LzUvNSyCsYLHguCCzJP6LDIwMTgvNS81DQqKQ4LMk/osMjAxNi83LzE4LIpDgsyT+iwyMDE3LzcvMTcsikOCzJP6LDIwMTgvNy8xNg0KjlKCzJP6LDIwMTYvOC8xMSyOUoLMk/osMjAxNy84LzExLI5SgsyT+iwyMDE4LzgvMTENCoxomFaCzJP6LDIwMTYvOS8xOSyMaJhWgsyT+iwyMDE3LzkvMTgsjGiYVoLMk/osMjAxOC85LzE3DQqPSJWqgsyT+iwyMDE2LzkvMjIsj0iVqoLMk/osMjAxNy85LzIzLI9IlaqCzJP6LDIwMTgvOS8yMw0KkcyI54LMk/osMjAxNi8xMC8xMCyRzIjngsyT+iwyMDE3LzEwLzkskcyI54LMk/osMjAxOC8xMC84DQqVtom7gsyT+iwyMDE2LzExLzMslbaJu4LMk/osMjAxNy8xMS8zLJW2ibuCzJP6LDIwMTgvMTEvMw0Ki86YSoq0jtOCzJP6LDIwMTYvMTEvMjMsi86YSoq0jtOCzJP6LDIwMTcvMTEvMjMsi86YSoq0jtOCzJP6LDIwMTgvMTEvMjMNCpNWjWOSYZC2k/osMjAxNi8xMi8yMyyTVo1jkmGQtpP6LDIwMTcvMTIvMjMsk1aNY5JhkLaT+iwyMDE4LzEyLzIzDQosLCwsLA0KjI6T+oLNlVyOpoK3gumDQYN2g4qDUIFbg1aDh4OTgsmC5oLBgsSMYI6ugqqI2YLIgumP6o2HgqqCoILogtyCt4FCLCwsLCwNCg==
+    http_version: 
+  recorded_at: Wed, 01 Mar 2017 00:54:39 GMT
+recorded_with: VCR 3.0.3
