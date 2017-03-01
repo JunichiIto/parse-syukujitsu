@@ -10,18 +10,16 @@ class SyukujitsuParser
   CSV_PATH = File.expand_path('../../resource/syukujitsu.csv', __FILE__)
   CSV_URL = 'http://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv'
 
-  class << self
-    def parse_from_web(csv_url = CSV_URL)
-      Tempfile.create do |file|
-        csv = open(csv_url).read
-        File.write(file, csv)
-        parse(file.path)
-      end
+  def self.parse_from_web(csv_url = CSV_URL)
+    Tempfile.create do |file|
+      csv = open(csv_url).read
+      File.write(file, csv)
+      parse(file.path)
     end
+  end
 
-    def parse(csv_path = CSV_PATH)
-      self.new.parse(csv_path)
-    end
+  def self.parse(csv_path = CSV_PATH)
+    self.new.parse(csv_path)
   end
 
   def parse(csv_path)
