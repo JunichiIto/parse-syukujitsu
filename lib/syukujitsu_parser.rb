@@ -1,14 +1,27 @@
 require 'csv'
 require 'date'
+require 'open-uri'
+require 'tempfile'
 
 class SyukujitsuParser
   YEAR_COL = 0
   DATA_COL_RANGE = 2..-1
   ROW_CYCLE = 2
   CSV_PATH = File.expand_path('../../resource/syukujitsu.csv', __FILE__)
+  CSV_URL = 'http://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv'
 
-  def self.parse(csv_path = CSV_PATH)
-    self.new.parse(csv_path)
+  class << self
+    def parse_from_web(csv_url = CSV_URL)
+      Tempfile.create do |file|
+        csv = open(csv_url).read
+        File.write(file, csv)
+        parse(file.path)
+      end
+    end
+
+    def parse(csv_path = CSV_PATH)
+      self.new.parse(csv_path)
+    end
   end
 
   def parse(csv_path)

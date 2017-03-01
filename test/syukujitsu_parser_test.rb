@@ -65,4 +65,9 @@ class SyukujitsuParserTest < Minitest::Test
     actual = SyukujitsuParser.parse
     assert_equal expected, actual
   end
+
+  def test_parse_from_web
+    actual = SyukujitsuParser.parse_from_web
+    assert_equal expected, actual
+  end
 end
