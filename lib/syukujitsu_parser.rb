@@ -5,7 +5,6 @@ require 'tempfile'
 
 class SyukujitsuParser
   YEAR_COL = 0
-  DATA_COL_RANGE = 2..-1
   ROW_CYCLE = 2
   CSV_PATH = File.expand_path('../../resource/syukujitsu.csv', __FILE__)
   CSV_URL = 'http://www8.cao.go.jp/chosei/shukujitsu/syukujitsu.csv'
@@ -40,7 +39,7 @@ class SyukujitsuParser
   end
 
   def to_data(pair_cols)
-    pair_cols[DATA_COL_RANGE].map { |name, date|
+    pair_cols.map { |name, date|
       parsed_date = try_date_parse(date)
       [parsed_date, name] if parsed_date
     }.compact.to_h
