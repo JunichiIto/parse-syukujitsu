@@ -1,3 +1,4 @@
+require 'minitest/autorun'
 require 'vcr'
 
 VCR.configure do |c|

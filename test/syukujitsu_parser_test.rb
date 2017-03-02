@@ -1,6 +1,5 @@
 require './test/test_helper'
 require './lib/syukujitsu_parser'
-require 'minitest/autorun'
 
 class SyukujitsuParserTest < Minitest::Test
   def expected
