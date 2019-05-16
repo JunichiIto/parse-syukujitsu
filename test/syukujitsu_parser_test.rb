@@ -66,10 +66,4 @@ class SyukujitsuParserTest < Minitest::Test
     assert_equal expected, actual
   end
 
-  def test_parse_from_web
-    VCR.use_cassette 'test_parse_from_web' do
-      actual = SyukujitsuParser.parse_from_web
-      assert_equal expected, actual
-    end
-  end
 end
